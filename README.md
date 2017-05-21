@@ -11,7 +11,7 @@ to invoke a Step Function from a Lambda function. This way, if you want to, for
 example, invoke a Step Function from SES, this function can serve as the
 conduit.
 
-### Basic
+### To use:
 
 1. `npm i -g aws-sdk` to install AWS SDK if you haven't already.
 2. `npm i` in repo directory to build node modules.
