@@ -13,7 +13,7 @@ class LambdaFunction {
 
     async.waterfall([
         (...args) => {
-          this.invokeStepFunction(context, ...args);
+          this.invokeStepFunction(...args);
         }
       ],
       (...args) => {
@@ -22,11 +22,10 @@ class LambdaFunction {
     );
   }
 
-  invokeStepFunction(context, callback) {
+  invokeStepFunction(callback) {
     const stepFunction = new aws.StepFunctions();
-    const accountId = context.invokedFunctionArn.split(':')[4];
     const params = {
-      stateMachineArn: `arn:aws:states:us-east-1:${accountId}:stateMachine:HelloWorld`,
+      stateMachineArn: `arn:aws:states:us-east-1:975366878261:stateMachine:HelloWorld`,
       input: JSON.stringify({})
     };
     stepFunction.startExecution(params, (err, data) => {
