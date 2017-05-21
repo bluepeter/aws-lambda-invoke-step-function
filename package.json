@@ -1,0 +1,18 @@
+{
+  "function": "ExampleStepFunctionInvocation",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^1.4.2",
+    "bunyan": "^1.8.7",
+    "aws-sdk": "^2.3.11"
+  },
+  "devDependencies": {
+    "node-lambda": "^0.10.0"
+  },
+  "scripts": {
+    "setup": "node-lambda setup",
+    "start": "node-lambda run | ./node_modules/.bin/bunyan",
+    "deploy": "node-lambda deploy",
+    "updateProd": "ver=\"$(aws lambda publish-version --function-name $npm_package_function --query 'Version' --output 'text')\";aws lambda update-alias --function-name $npm_package_function --name PROD --function-version $ver"
+  }
+}
